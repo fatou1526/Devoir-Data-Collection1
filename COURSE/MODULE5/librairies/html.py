@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 
 BASE_URL = 'COURSE/DATABASES/data-zIybdmYZoV4QSwgZkFtaB.html'
 
+# 1. Completer le code de HtmlFactory, afin de récupérer les données
 class HtmlFactory(object):
     @classmethod
     def openFile(cls):
@@ -15,5 +16,9 @@ class HtmlFactory(object):
                 'html.parser')
             file.close()
         return data
- 
+    @classmethod
+    def main(cls):
+        # 1. Completer le code de HtmlFactory, afin de récupérer les données
+        data = cls.openFile() 
+        return data
     
