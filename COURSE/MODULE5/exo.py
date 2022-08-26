@@ -4,6 +4,9 @@ from libraries.json import JsonFactory
 from libraries.html import HtmlFactory
 from libraries.bceao import CurrencyScrapper
 import pandas as pd
+import requests
+import json
+from libraries.apiCountry import CountryDonnees
 """
     4. Grace aux trois Factory, implémenter une méthode qui concatène tous les trois datas. C'est à dire:
 	- Celui de CsvFactory
@@ -13,6 +16,14 @@ import pandas as pd
 def concatener(data1, data2, data3):
     final_data = data1 + data2 + data3
     return final_data
+
+
+# Question 6
+    URL = 'https://restcountries.com/v2/all'
+    countryData = requests.get(URL)
+    countryData = json.loads(countryData.text[:])
+    print(countryData)
+
 if __name__ == '__main__':
     print(Utils.divider())
     # Question 1, 2 et 3: Recuperation et affichage des données html
@@ -49,3 +60,13 @@ if __name__ == '__main__':
     global_data['Conversion en XOF'] = global_data['Conversion en XOF'] \
         .apply(lambda x: Utils.conversionXOF(global_data, currencyDataframe))
     print(global_data)
+    
+    print(Utils.divider())
+    """
+    . Utiliser l'API FREE de countries
+    - Chercher l'API countries sur le NET
+	- Pour ajouter des pays de manière aléatoire dans une nouvelle entrée (Colonne)
+	- Puis y joindre les flags de ces pays dans une nouvelle entrée
+"""
+    paysdata = CountryDonnees.addCountry(countryData)
+    global_data = list(global_data)
