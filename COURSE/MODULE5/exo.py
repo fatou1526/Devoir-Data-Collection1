@@ -36,3 +36,16 @@ if __name__ == '__main__':
     global_data['Devise'] = global_data['Devise'] \
         .apply(lambda x: Utils.randomizeCurrency(['Euro', 'Dollar us', 'Yen japonais']))
     print(global_data)
+    
+    """- Ajouter une nouvelle entrée qui donnera la conversion en XOF
+		- Ainsi on aura une entrée contenant la devise attribuée
+		- Puis une entrée contenant la conversion en XOF via les données de la BCEAO
+    """
+    print(Utils.divider())
+    currency = CurrencyScrapper.makeCurrencyList()
+    currencyDataframe = pd.DataFrame(currency)
+    print(currencyDataframe)
+    global_data['Conversion en XOF']=0
+    global_data['Conversion en XOF'] = global_data['Conversion en XOF'] \
+        .apply(lambda x: Utils.conversionXOF(global_data, currencyDataframe))
+    print(global_data)
