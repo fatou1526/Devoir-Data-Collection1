@@ -26,8 +26,14 @@ class Utils(object):
         for i in range(len(dataframe2)):
             for j in range(len(dataframe1)):
                 if dataframe1['Devise'][j] == dataframe2['Devise'][i]:
-                    dataframe1['Conversion en XOF'][j] = int(dataframe1['salary'][j]) * int(dataframe2['Achat'][i])
+                    dataframe1['Conversion en XOF'][j] = float(dataframe1['salary'][j]) * float(dataframe2['Achat'][i])
         return dataframe1
+    
+    # Question 6: Cette methode sera utilisé pour assigner aléatoirement les pays
+    @classmethod
+    def randomizeCountry(cls, liste):
+        return random\
+            .randint(0, len(liste)-1)
 
     @classmethod
     def x(cls, x):
