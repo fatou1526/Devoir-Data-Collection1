@@ -19,6 +19,15 @@ class Utils(object):
                           liste:list()):
         return random \
             .choice(liste)
+         
+    # Cette methode sera utilisée pour faire la conversion XOF des devises   
+    @classmethod 
+    def conversionXOF(cls, dataframe1, dataframe2):
+        for i in range(len(dataframe2)):
+            for j in range(len(dataframe1)):
+                if dataframe1['Devise'][j] == dataframe2['Devise'][i]:
+                    dataframe1['Conversion en XOF'][j] = int(dataframe1['salary'][j]) * int(dataframe2['Achat'][i])
+        return dataframe1
 
     @classmethod
     def x(cls, x):
